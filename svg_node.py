@@ -1,6 +1,6 @@
 from .svgutils import upscale_with_vectorization
 from .autonode import node_wrapper, validate, get_node_names_mappings
-from utils.converter import PILHandlingHodes
+from .utils.converter import PILHandlingHodes
 
 # upscale_with_vectorization is a function that converts a PIL Image to SVG (via Potrace) and back to PNG (via CairoSVG).
 """
