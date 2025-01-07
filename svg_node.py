@@ -29,7 +29,7 @@ classes = []
 node = node_wrapper(classes)
 
 
-@fundamental_node
+@node
 class ResizeImageNode:
     FUNCTION = "resize_image"
     RETURN_TYPES = ("IMAGE",)
