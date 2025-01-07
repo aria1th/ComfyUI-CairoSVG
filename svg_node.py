@@ -30,27 +30,6 @@ node = node_wrapper(classes)
 
 
 @node
-class ResizeImageNode:
-    FUNCTION = "resize_image"
-    RETURN_TYPES = ("IMAGE",)
-    CATEGORY = "image"
-    custom_name = "Resize Image"
-    @staticmethod
-    @PILHandlingHodes.output_wrapper
-    def resize_image(image, width, height, method):
-        image = PILHandlingHodes.handle_input(image)
-        return (image.resize((width, height), ResizeImageNode.constants[method]),)
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {
-            "required": {
-                "image": ("IMAGE",),
-                "size": ("INT", {"default": 512}),
-                "method": (["NEAREST", "LANCZOS", "BICUBIC"],),
-            },
-        }
-
-@node
 class VectorizedUpscaleScaling:
     FUNCTION = "vectorized_upscale"
     RETURN_TYPES = ("IMAGE",)

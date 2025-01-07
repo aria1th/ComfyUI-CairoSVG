@@ -14,24 +14,17 @@ def handle_rgba_composite(
     image: Image.Image, background_color=(255, 255, 255)
 ) -> Image.Image:
     """
-    Convert RGBA image to RGB image using alpha_composite.
+    Convert image to RGB/RGBA image using alpha_composite.
     """
     mode = image.mode
     if mode == "RGB":
         return image
     if mode == "RGBA":
-        # Create a white RGBA background
-        background = Image.new("RGBA", image.size, (255, 255, 255, 255))
-        # Composite the original image over the white background
-        composed = Image.alpha_composite(background, image)
-        # Convert back to RGB (now that background is flattened)
-        return composed.convert("RGB")
+        return image
     elif mode == "LA":
         # "LA" is 8-bit grayscale + alpha.
-        rgba_image = image.convert("RGBA")
-        background = Image.new("RGBA", rgba_image.size, (*background_color, 255))
-        composed = Image.alpha_composite(background, rgba_image)
-        return composed.convert("RGB")
+        # return as RGBA
+        return image.convert("RGBA")
 
     # 3. "L" or "1" = Grayscale or Black/White, "P" = Palette
     elif mode in ["L", "1", "P"]:
