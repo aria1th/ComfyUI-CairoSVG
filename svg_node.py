@@ -36,6 +36,7 @@ class VectorizedUpscaleScaling:
     CATEGORY = "image"
     custom_name = "Vectorized Upscale (With Scaling)"
     @staticmethod
+    @PILHandlingHodes.output_wrapper
     def vectorized_upscale(image, scale):
         image = PILHandlingHodes.handle_input(image)
         return (upscale_with_vectorization(image, scale=scale),)
@@ -55,6 +56,7 @@ class VectorizedUpscaleSize:
     CATEGORY = "image"
     custom_name = "Vectorized Upscale (With Size)"
     @staticmethod
+    @PILHandlingHodes.output_wrapper
     def vectorized_upscale_size(image, width, height):
         image = PILHandlingHodes.handle_input(image)
         return (upscale_with_vectorization(image, output_width=width, output_height=height),)
