@@ -116,6 +116,8 @@ def upscale_with_vectorization(
         try:
             output_image = Image.open(io.BytesIO(png_bytes))
             output_image.load()  # Force load
+            # rgba
+            return output_image.convert("RGBA")
         except Exception as e:
             raise RuntimeError(
                 f"Failed to open generated PNG as PIL Image: {str(e)}"
